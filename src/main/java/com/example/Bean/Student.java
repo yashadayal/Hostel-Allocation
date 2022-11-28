@@ -20,6 +20,20 @@ public class Student {
     @Column(name = "LastName", nullable = false)
     private String lastName;
 
+    public Student(int rollNo, String firstName, String lastName, String email, String photographPath, float cgpa, int totalCredits, int graduationYear) {
+        this.rollNo = rollNo;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.photographPath = photographPath;
+        this.cgpa = cgpa;
+        this.totalCredits = totalCredits;
+        this.graduationYear = graduationYear;
+    }
+
+    public Student() {
+    }
+
     public int getStudentId() {
         return studentId;
     }

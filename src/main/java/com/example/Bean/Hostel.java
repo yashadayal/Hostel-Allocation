@@ -20,10 +20,19 @@ public class Hostel {
     @Column(name = "RoomNumber", nullable = false , unique = true)
     private int roomNo;
 
-    @ManyToOne
-    @JoinColumn(name = "studentId", referencedColumnName = "studentId")
+    @OneToOne(targetEntity = Student.class, cascade = {CascadeType.ALL})
+    @JoinColumn(name = "StudentID", referencedColumnName = "StudentID")
     private Student studentId;
 
+
+    public Hostel(String name, int floor, int roomNo) {
+        this.name = name;
+        this.floor = floor;
+        this.roomNo = roomNo;
+    }
+
+    public Hostel() {
+    }
 
     public String getName() {
         return name;

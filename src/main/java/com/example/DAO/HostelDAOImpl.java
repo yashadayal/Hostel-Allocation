@@ -40,4 +40,19 @@ public class HostelDAOImpl implements HostelDAO{
             return null;
         }
     }
+
+    @Override
+    public boolean addRoom(Hostel hostel) {
+        try(Session session = HibernateSessionUtil.getSession()){
+            Transaction transaction = session.beginTransaction();
+            session.persist(hostel);
+            transaction.commit();
+            return true;
+        }
+        catch (HibernateException exception) {
+            System.out.println("Hibernate Exception");
+            System.out.print(exception.getLocalizedMessage());
+            return false;
+        }
+    }
 }

@@ -19,4 +19,10 @@ public class HostelService {
         hostelDAO = new HostelDAOImpl();
         return hostelDAO.updateRoom(hostel);
     }
+
+    public boolean addRoom(Hostel hostel)
+    {
+        hostelDAO = new HostelDAOImpl();
+        return hostelDAO.addRoom(hostel);
+    }
 }

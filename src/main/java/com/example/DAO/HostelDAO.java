@@ -8,4 +8,7 @@ public interface HostelDAO {
 
     List<Hostel> getRooms();
     boolean updateRoom(Hostel hostel);
+
+    boolean addRoom(Hostel hostel);
+
 }
