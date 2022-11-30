@@ -14,15 +14,15 @@ public class HostelService {
         hostelDAO = new HostelDAOImpl();
         return hostelDAO.getRooms();
     }
-    public boolean updateRoom(Hostel hostel)
+    public boolean updateRoom(Integer hostelId, Hostel hostel)
     {
         hostelDAO = new HostelDAOImpl();
-        return hostelDAO.updateRoom(hostel);
+        return hostelDAO.updateRoom(hostelId, hostel);
     }
 
     public boolean addRoom(Hostel hostel)
     {
         hostelDAO = new HostelDAOImpl();
-        return hostelDAO.addRoom(hostel);
+        return this.hostelDAO.addRoom(hostel);
     }
 }

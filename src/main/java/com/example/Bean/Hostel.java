@@ -9,37 +9,47 @@ public class Hostel {
     @Id
     @Column(name = "hostel_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int hostel_id;
-
-    @Column(name = "Student_Name", nullable = false)
-    private String name;
+    private int hostelId;
 
     @Column(name = "Floor", nullable = false)
+    //postman mein post karte time use ths
     private int floor;
 
     @Column(name = "RoomNumber", nullable = false , unique = true)
     private int roomNo;
 
-    @OneToOne(targetEntity = Student.class, cascade = {CascadeType.ALL})
-    @JoinColumn(name = "StudentID", referencedColumnName = "StudentID")
-    private Student studentId;
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "StudentID", referencedColumnName ="StudentID")
+    private Student student;
 
 
-    public Hostel(String name, int floor, int roomNo) {
-        this.name = name;
+    public Hostel(int floor, int roomNo) {
         this.floor = floor;
         this.roomNo = roomNo;
+    }
+
+    public Hostel(int floor, int roomNo, Student student) {
+        this.floor = floor;
+        this.roomNo = roomNo;
+        this.student = student;
+    }
+
+    public Hostel(Hostel hostel) {
+        this.hostelId = hostel.hostelId;
+        this.floor = hostel.floor;
+        this.roomNo = hostel.roomNo;
+        this.student = hostel.student;
     }
 
     public Hostel() {
     }
 
-    public String getName() {
-        return name;
+    public int getHostelId() {
+        return hostelId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setHostelId(int hostelId) {
+        this.hostelId = hostelId;
     }
 
     public int getFloor() {
@@ -58,22 +68,23 @@ public class Hostel {
         this.roomNo = roomNo;
     }
 
-    public Student getStudentId() {
-        return studentId;
+
+    public Student getStudent() {
+        return student;
     }
 
-    public void setStudentId(Student studentId) {
-        this.studentId = studentId;
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
     @Override
     public String toString() {
         return "Hostel{" +
-                "hostel_id=" + hostel_id +
-                ", name='" + name + '\'' +
+                "hostelId=" + hostelId +
                 ", floor=" + floor +
                 ", roomNo=" + roomNo +
-                ", studentId=" + studentId +
+                ", student=" + student +
                 '}';
     }
 }

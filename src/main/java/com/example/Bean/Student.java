@@ -2,6 +2,7 @@ package com.example.Bean;
 
 import jakarta.persistence.*;
 
+
 @Entity
 @Table(name = "Student")
 public class Student {
@@ -20,7 +21,21 @@ public class Student {
     @Column(name = "LastName", nullable = false)
     private String lastName;
 
-    public Student(int rollNo, String firstName, String lastName, String email, String photographPath, float cgpa, int totalCredits, int graduationYear) {
+    @Column(name = "Email", nullable = false)
+    private String email;
+
+    @Column(name = "PhotographPath", nullable = false)
+    private String photographPath;
+
+    @Column(name = "CGPA", nullable = false)
+    private double cgpa;
+
+    @Column(name = "TotalCredits", nullable = false)
+    private int totalCredits;
+
+    @Column(name = "GraduationYear", nullable = false)
+    private int graduationYear;
+    public Student(int rollNo, String firstName, String lastName, String email, String photographPath, double cgpa, int totalCredits, int graduationYear) {
         this.rollNo = rollNo;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -82,11 +97,11 @@ public class Student {
         this.photographPath = photographPath;
     }
 
-    public float getCgpa() {
+    public double getCgpa() {
         return cgpa;
     }
 
-    public void setCgpa(float cgpa) {
+    public void setCgpa(double cgpa) {
         this.cgpa = cgpa;
     }
 
@@ -106,12 +121,8 @@ public class Student {
         this.graduationYear = graduationYear;
     }
 
-    private String email;
 
-    private String photographPath;
-    private float cgpa;
-    private int totalCredits;
-    private int graduationYear;
+
     @Override
     public String toString() {
         return "Student{" +
