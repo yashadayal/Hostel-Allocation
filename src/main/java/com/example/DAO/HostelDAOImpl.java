@@ -48,29 +48,6 @@ public class HostelDAOImpl implements HostelDAO{
         }
     }
 
-//    @Override
-//    public boolean updateRoom(Integer roomNo, Hostel newHostel) {
-//        try(Session session = HibernateSessionUtil.getSession()){
-//            System.out.println("Update -> "+ newHostel);
-//            Transaction tx = session.beginTransaction();
-//            Hostel hostel = session.get(Hostel.class, newHostel.getHostelId());
-//            hostel.setStudent(newHostel.getStudent());
-//            tx.commit();
-//            session.close();
-//            tx = session.beginTransaction();
-//            session.saveOrUpdate(hostel);
-//            tx.commit();
-//            System.out.println("Object Updated successfully.....!!");
-//            session.close();
-//            return true;
-//        }
-//        catch (HibernateException exception) {
-//            System.out.println("Hibernate Exception");
-//            System.out.print(exception.getLocalizedMessage());
-//            return false;
-//        }
-//    }
-
     @Override
     public boolean updateRoom(Integer hostelId, Hostel newHostel) {
         try(Session session = HibernateSessionUtil.getSession()){
