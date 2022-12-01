@@ -4,7 +4,7 @@ import com.example.Bean.Student;
 
 public interface StudentDAO {
 
-    public Student getStudent(int studentId);
+    public Student getStudent(int rollNo);
 
 
     boolean addStudent(Student student);

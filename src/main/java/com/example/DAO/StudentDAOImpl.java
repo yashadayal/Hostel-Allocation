@@ -28,18 +28,16 @@ public class StudentDAOImpl implements StudentDAO {
         }
     }
 
-    public Student getStudent(int id){
-        System.out.println("-->>");
+    public Student getStudent(int rollNo){
         try(Session session = HibernateSessionUtil.getSession()){
-            System.out.println("Try");
-            Query query1 =  session.createQuery("from Student where studentId =: id");
-            query1.setParameter("id",id);
+            System.out.println("rollNo: "+rollNo);
+            Query query1 =  session.createQuery("from Student where rollNo =: rollNo");
+            query1.setParameter("rollNo",rollNo);
             List list=query1.list();
             System.out.println(list);
-            Student student = (Student)list.get(0);
+            if(list.size()==0) return null;
+            Student student = (Student)list.get(0);// as list is not getting converting to student object
             System.out.println("List to student object : "+student);
-            //Student student = (Student) session.createQuery("from Student where studentId = id").list().get(0);
-            //System.out.println("student"+student);
             Transaction tx = session.beginTransaction();
             tx.commit();
             session.close();

@@ -1,12 +1,11 @@
 package com.example.DriverClass;
 
 
+import com.example.Bean.Employee;
 import com.example.Bean.Hostel;
 import com.example.Bean.Student;
-import com.example.DAO.HostelDAO;
-import com.example.DAO.HostelDAOImpl;
-import com.example.DAO.StudentDAO;
-import com.example.DAO.StudentDAOImpl;
+import com.example.DAO.*;
+import com.example.Util.CORSFilter;
 
 public class Application {
     public static void main(String[] args){
@@ -16,7 +15,6 @@ public class Application {
     }
 
     private static void runApplication() {
-
         Student stud1  = new Student(2021063,"Jayesh","Dayal","abc@gmail.com","xyz",4,20,2023);
         Hostel hostel1 = new Hostel();
         hostel1.setFloor(2);
@@ -38,5 +36,9 @@ public class Application {
         }
         else
             System.out.println("Something went wrong");
+
+        Employee e = new Employee("khushal", "hi", "a@b.c");
+        EmployeeDao employeeDao = new EmployeeDaoImpl();
+        employeeDao.addEmployee(e);
     }
 }

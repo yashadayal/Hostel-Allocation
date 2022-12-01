@@ -12,14 +12,14 @@ public class Hostel {
     private int hostelId;
 
     @Column(name = "Floor", nullable = false)
-    //postman mein post karte time use ths
+    //postman mein post karte time use this
     private int floor;
 
     @Column(name = "RoomNumber", nullable = false , unique = true)
     private int roomNo;
 
     @OneToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "StudentID", referencedColumnName ="StudentID")
+    @JoinColumn(name = "StudentID", referencedColumnName ="StudentID", unique = true)
     private Student student;
 
 

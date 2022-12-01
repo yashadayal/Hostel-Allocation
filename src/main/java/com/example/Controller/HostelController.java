@@ -4,6 +4,7 @@ import com.example.Bean.Hostel;
 import com.example.Bean.Student;
 import com.example.Services.HostelService;
 import com.example.Services.StudentService;
+import com.example.exception.APIRequestException;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 
@@ -29,11 +30,18 @@ public class HostelController {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public String addRoom(Hostel hostel){
-        int studentId = hostel.getStudent().getStudentId();
-        studentService = new StudentService();
-        Student student = studentService.getStudent(studentId);
-        hostel.setStudent(student);
+        int rollNo = hostel.getStudent() == null ? 0 : hostel.getStudent().getRollNo();
+        System.out.println("Add Rooms: "+rollNo);
         hostelService = new HostelService();
+        if(rollNo != 0) {
+            studentService = new StudentService();
+            Student student = studentService.getStudent(rollNo);
+            if(student == null)
+                throw new APIRequestException("Student roll number: "+rollNo+" not valid!");
+            hostel.setStudent(student);
+        }else{
+            hostel.setStudent(null);
+        }
         hostelService.addRoom(hostel);
         return hostel.toString();
     }
@@ -43,11 +51,16 @@ public class HostelController {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public boolean updateRoom(@PathParam ("hostelId") Integer id, Hostel hostel){
-        System.out.println("Update hostelID: "+id+" to student ID: "+hostel.getStudent().getStudentId());
+        int rollNo = hostel.getStudent().getRollNo();
+        System.out.println("Update hostelID: "+id+" to student ID: "+hostel.getStudent().getRollNo());
         hostelService = new HostelService();
-        studentService = new StudentService();
-        Student student = studentService.getStudent(hostel.getStudent().getStudentId());
-        hostel.setStudent(student);
+        if(rollNo != 0) {
+            studentService = new StudentService();
+            Student student = studentService.getStudent(rollNo);
+            hostel.setStudent(student);
+        }else{
+            hostel.setStudent(null);
+        }
         return hostelService.updateRoom(id, hostel);
     }
 }

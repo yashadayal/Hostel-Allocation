@@ -7,9 +7,9 @@ import com.example.DAO.StudentDAOImpl;
 public class StudentService {
 
     private StudentDAO studentDAO;
-    public Student getStudent(int studentId){
+    public Student getStudent(int rollNo){
         studentDAO = new StudentDAOImpl();
         System.out.println("getStudentService!");
-        return studentDAO.getStudent(studentId);
+        return studentDAO.getStudent(rollNo);
     }
 }

@@ -31,7 +31,6 @@ public class HostelDAOImpl implements HostelDAO{
         }
     }
 
-
     public boolean addRoom(Hostel hostel) {
         System.out.println("Impl:"+hostel);
         try(Session session = HibernateSessionUtil.getSession()){
@@ -51,7 +50,6 @@ public class HostelDAOImpl implements HostelDAO{
     @Override
     public boolean updateRoom(Integer hostelId, Hostel newHostel) {
         try(Session session = HibernateSessionUtil.getSession()){
-            System.out.println("Update -> "+ newHostel);
             Transaction tx = session.beginTransaction();
             Query query = session.createQuery("Update Hostel set student=:student where hostelId =: hostelId");
             query.setParameter("hostelId",hostelId);
