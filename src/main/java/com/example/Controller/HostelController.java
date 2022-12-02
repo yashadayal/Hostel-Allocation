@@ -52,7 +52,6 @@ public class HostelController {
     @Consumes(MediaType.APPLICATION_JSON)
     public boolean updateRoom(@PathParam ("hostelId") Integer id, Hostel hostel){
         int rollNo = hostel.getStudent().getRollNo();
-        System.out.println("Update hostelID: "+id+" to student ID: "+hostel.getStudent().getRollNo());
         hostelService = new HostelService();
         if(rollNo != 0) {
             studentService = new StudentService();

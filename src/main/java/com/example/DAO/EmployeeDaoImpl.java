@@ -19,7 +19,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
             query1.setParameter("email",email);
             List list=query1.list();
             System.out.println("list"+list);
-            Employee employee = (Employee)list.get(0);// as list is not getting converting to student object
+            Employee employee = (Employee)list.get(0);// as list is not getting converting to employee object
             Transaction tx = session.beginTransaction();
             tx.commit();
             session.close();
