@@ -37,7 +37,7 @@ public class Application {
         else
             System.out.println("Something went wrong");
 
-        Employee e = new Employee("khushal", "hi", "a@b.c");
+        Employee e = new Employee("Warden1", "hi", "a@b.c");
         EmployeeDao employeeDao = new EmployeeDaoImpl();
         employeeDao.addEmployee(e);
     }

@@ -30,18 +30,20 @@ public class HostelController {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public String addRoom(Hostel hostel){
-        int rollNo = hostel.getStudent() == null ? 0 : hostel.getStudent().getRollNo();
-        System.out.println("Add Rooms: "+rollNo);
+        //int rollNo = hostel.getStudent() == null ? 0 : hostel.getStudent().getRollNo();
+        //System.out.println("Add Rooms: "+rollNo);
+//        hostelService = new HostelService();
+//        if(rollNo != 0) {
+//            studentService = new StudentService();
+//            Student student = studentService.getStudent(rollNo);
+//            if(student == null)
+//                throw new APIRequestException("Student roll number: "+rollNo+" not valid!");
+//            hostel.setStudent(student);
+//        }else{
+//            hostel.setStudent(null);
+//        }
+        hostel.setStudent(null);
         hostelService = new HostelService();
-        if(rollNo != 0) {
-            studentService = new StudentService();
-            Student student = studentService.getStudent(rollNo);
-            if(student == null)
-                throw new APIRequestException("Student roll number: "+rollNo+" not valid!");
-            hostel.setStudent(student);
-        }else{
-            hostel.setStudent(null);
-        }
         hostelService.addRoom(hostel);
         return hostel.toString();
     }
